@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Editing Page</title>
+	<script type="text/javascript" src="js/fabric.js"></script>
+	<!-- // <script type="text/javascript" src="script.js"></script> -->
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/CanvasInput-master/CanvasInput.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/2ndpageStyle.css">
+</head>
+<body>
+	<div class="editTooltop">
+		<div class="editTools">
+			<button>Brightness</button>
+			<button>Resize</button>
+			<button>Contrast</button>
+		</div>
+		<div class="subCategory">
+			
+		</div>
+	</div>
+	<button id="save">Save and download Image</button>
+	<div class="content">
+		<canvas id="myCanvas" width="580" height="378"></canvas>
+	</div> 
+	<image id="theimage"></image> 
+	<!-- for downloading the image created using canvas and ediiting  -->
+	<div class="sideBarLeft">
+		<div id="background">
+			<div class="heading">
+				<span class="name">Background</span>
+				<button class="explore">Explore</button>
+			</div>
+			<div>
+			<!-- Add images here it will be seen as small image in pictures box -->
+				<img src="backgroundImages/cat.jpg" id="image1" class="addImage backgroundimage">
+				<img src="backgroundImages/cat-01.jpg" id="image2" class="addImage backgroundimage">
+			</div>
+		</div>
+		<div id="textbox">
+			<div class="heading">
+				<span class="name">Textbox</span>
+				<button class="explore">Explore</button>
+			</div>
+			<div>
+				<!-- add textbox of different type here -->
+					<img src="backgroundImages/textbox.png" class="addTextbox backgroundimage" id="textbox1">
+			</div>
+		</div>
+		<div id="pictures">
+			<div class="heading">
+				<span class="name">Pictures</span>
+				<button class="explore">Explore</button>
+			</div>
+			<div>
+				<!-- what will come here ask John -->
+			</div>
+		</div>
+		<div id="grids">
+			<div class="heading">
+				<span class="name">Grids</span>
+			</div>
+		</div>
+		<div id="icons">
+			<div class="heading">
+				<span class="name">Icons</span>
+			</div>
+		</div>
+		<div id="frames">
+			<div class="heading">
+				<span class="name">Frames</span>
+			</div>
+		</div>
+	</div>
+	<div class="layersRight">
+		<p></p>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+$(document).ready(function() {
+	var canvas = new fabric.Canvas("myCanvas");
+	$(".addTextbox").click(function(){
+    	var rect = new fabric.Rect();
+    	rect.set({left:10,width:10,height:20,fill:'$f55',opacity:0.7});
+		canvas.add(rect);
+		$("p").text(canvas.item[0]);
+	});
+	$(".addImage").click(function(){
+		var id = $(this).attr('id');
+		var imgElement = document.getElementById(id); //Jquery selector did not work here
+		var imgInstance = new fabric.Image(imgElement,{
+			left: 100,
+			top: 100,
+			width: 200,
+			height: 80
+		});
+		canvas.add(imgInstance);
+	});
+	$("#save").click(function(){
+		var image = canvas.toDataURL("image/png").replace("image/png","image/octet-stream");
+		window.location.href = image;
+	});
+});
+</script>

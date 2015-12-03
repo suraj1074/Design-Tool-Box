@@ -1,0 +1,67 @@
+.content{
+	position: absolute;
+    top: 25%;
+    left: 25%;
+    border: 5px solid #F00;
+    width: 45%;
+    height: 60%;
+}
+.editTooltop{
+	border: 5px solid #F00;
+	position: absolute;
+	top: 4%;
+	height: 14%;
+	width: 66%;
+	left: 25%;
+}
+.sideBarLeft{
+	text-align: center;
+	border: 5px solid #F00;
+	position: absolute;
+	top: 16%;
+	width: 18%;
+	left: 3%;
+	height: 70%;
+}
+.layersRight{
+	border: 5px solid #F00;
+	position: absolute;
+	top: 25%;
+	right: 7%;
+	width: 19%;
+	height: 60%;
+}
+.editTools{
+	text-align:center;
+}
+.subCategory{
+
+}
+.backgroundimage{
+	width: 42px;
+	height: 27px;
+}
+#save{
+	position: absolute;
+	right: 279px;
+	top: 129px;
+}
+.name{
+	margin-right: 30px;
+}
+#background{
+	border: 1px solid blue;
+	height: 190px;
+}
+.heading{
+	border: 2px solid blue;
+	border-radius: 10px;
+}
+#textbox{
+	border: 1px solid blue;
+	height: 100px;
+}
+.sideBarLeft div
+{
+	margin-top: 5px;
+}

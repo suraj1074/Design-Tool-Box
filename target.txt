@@ -1,0 +1,26 @@
+Objective: To make a design App/Platform and photo editing platform that makes (graphic design *) simple for everyone.
+
+
+Functions:           Drag & Drop (Items*) in a workspace
+
+                                Edit, resize, cut, copy, paste (Items*) in a workspace
+
+                                Adding “Effects” to each layer of item or items
+
+ 
+
+Graphic Designs *: Fb template, Twitter template, Instagram template .letter ,visiting card etc
+
+(Sizes will be given to users or they can customize their own size)
+
+ 
+
+ 
+
+Items*: Background template, Pictures, Textbox, Fonts, Videos, grids, frames, lines, illustrations, Icons, graphs, stickers.
+
+ 
+
+Editing Effects*: like Enhance, Orientation, resize, crop, warmth, brightness, contrast, satruation, sharpness   etc .for each layer (As in aviary editor)
+
+Final Output:The final output Should be an Image in (png,jpeg,etc format )or a pdf ,ppt,etc

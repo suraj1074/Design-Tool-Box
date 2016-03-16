@@ -2,15 +2,23 @@
 <html>
 <head>
 	<title>Editing Page</title>
+<<<<<<< HEAD
 	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="js/fabric.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
 	<script type="text/javascript" src="js/FileSaver.min.js"></script>
+=======
+	<script type="text/javascript" src="js/fabric.js"></script>
+	<!-- // <script type="text/javascript" src="script.js"></script> -->
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/CanvasInput-master/CanvasInput.min.js"></script>
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 	<link rel="stylesheet" type="text/css" href="css/2ndpageStyle.css">
 </head>
 <body>
 	<div class="editTooltop">
 		<div class="editTools">
+<<<<<<< HEAD
 			<button id="filter">Filter</button>	
 			<button id="freeDrawing">Free Drawing</button>
 			<input type="button" id="undo" value="Undo"/>
@@ -96,6 +104,14 @@ vertical-align: middle;">
    			  <option value="Helevetica">Helevetica</option>
 			</select>
 		</div>
+=======
+			<button>Brightness</button>
+			<button>Resize</button>
+			<button>Contrast</button>
+		</div>
+		<div class="subCategory">
+			
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 		</div>
 	</div>
 	<button id="save">Save and download Image</button>
@@ -114,8 +130,11 @@ vertical-align: middle;">
 			<!-- Add images here it will be seen as small image in pictures box -->
 				<img src="backgroundImages/cat.jpg" id="image1" class="addImage backgroundimage">
 				<img src="backgroundImages/cat-01.jpg" id="image2" class="addImage backgroundimage">
+<<<<<<< HEAD
 				<img src="backgroundImages/img.svg" id="image3" class="backgroundimage">
 				<img src="backgroundImages/jsonImage.svg" id="image4" class="backgroundimage">
+=======
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 			</div>
 		</div>
 		<div id="textbox">
@@ -139,7 +158,11 @@ vertical-align: middle;">
 		</div>
 		<div id="grids">
 			<div class="heading">
+<<<<<<< HEAD
 				<span class="name" >Grids</span>
+=======
+				<span class="name">Grids</span>
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 			</div>
 		</div>
 		<div id="icons">
@@ -154,13 +177,19 @@ vertical-align: middle;">
 		</div>
 	</div>
 	<div class="layersRight">
+<<<<<<< HEAD
 	
 	</div>
 	<button id="check">Check</button>
+=======
+		<p></p>
+	</div>
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 </body>
 </html>
 <script type="text/javascript">
 $(document).ready(function() {
+<<<<<<< HEAD
 	var i = 0;
 	var k = 0; // to set id for images being added
 	var j; //to set the value of currently selected element in canvas
@@ -627,5 +656,29 @@ $("#crop").click(function(){
 		$(".col-lg-6").toggle();
 		$("#advFilter").toggle();
 	});
+=======
+	var canvas = new fabric.Canvas("myCanvas");
+	$(".addTextbox").click(function(){
+    	var rect = new fabric.Rect();
+    	rect.set({left:10,width:10,height:20,fill:'$f55',opacity:0.7});
+		canvas.add(rect);
+		$("p").text(canvas.item[0]);
+	});
+	$(".addImage").click(function(){
+		var id = $(this).attr('id');
+		var imgElement = document.getElementById(id); //Jquery selector did not work here
+		var imgInstance = new fabric.Image(imgElement,{
+			left: 100,
+			top: 100,
+			width: 200,
+			height: 80
+		});
+		canvas.add(imgInstance);
+	});
+	$("#save").click(function(){
+		var image = canvas.toDataURL("image/png").replace("image/png","image/octet-stream");
+		window.location.href = image;
+	});
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 });
 </script>

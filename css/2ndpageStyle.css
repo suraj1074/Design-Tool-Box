@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
 	list-style-type: none;
 	margin: 0;
@@ -41,6 +42,23 @@
 	height: auto;
 	width: 100%;
 	padding: 10px;
+=======
+.content{
+	position: absolute;
+    top: 25%;
+    left: 25%;
+    border: 5px solid #F00;
+    width: 45%;
+    height: 60%;
+}
+.editTooltop{
+	border: 5px solid #F00;
+	position: absolute;
+	top: 4%;
+	height: 14%;
+	width: 66%;
+	left: 25%;
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 }
 .sideBarLeft{
 	text-align: center;
@@ -52,25 +70,37 @@
 	height: 70%;
 }
 .layersRight{
+<<<<<<< HEAD
 	/*border: 5px solid #F00;
+=======
+	border: 5px solid #F00;
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 	position: absolute;
 	top: 25%;
 	right: 7%;
 	width: 19%;
+<<<<<<< HEAD
 	height: 60%;*/
+=======
+	height: 60%;
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 }
 .editTools{
 	text-align:center;
 }
+<<<<<<< HEAD
 
 .editTools img{
 	margin-right: 20px;
 	cursor: pointer;
 }
+=======
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 .subCategory{
 
 }
 .backgroundimage{
+<<<<<<< HEAD
 	width: 35px;
 	height: 27px;
 	cursor: pointer;
@@ -79,18 +109,35 @@
 	/*position: absolute;
 	right: 279px;
 	top: 129px;*/
+=======
+	width: 42px;
+	height: 27px;
+}
+#save{
+	position: absolute;
+	right: 279px;
+	top: 129px;
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 }
 .name{
 	margin-right: 30px;
 }
+<<<<<<< HEAD
 /*background{
 	/*border: 1px solid blue;
 	height: 190px;
 }*/
+=======
+#background{
+	border: 1px solid blue;
+	height: 190px;
+}
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 .heading{
 	border: 2px solid blue;
 	border-radius: 10px;
 }
+<<<<<<< HEAD
 /*#textbox{
 	border: 1px solid blue;
 	height: 100px;
@@ -214,4 +261,13 @@
 .myselectedCL {
 	background-image: none;
 	background-color: #999999;
+=======
+#textbox{
+	border: 1px solid blue;
+	height: 100px;
+}
+.sideBarLeft div
+{
+	margin-top: 5px;
+>>>>>>> c4eaf415aec34ba9cf1c57e050bb519a6c37a6be
 }

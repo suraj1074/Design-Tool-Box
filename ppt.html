@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Presentation</title>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> 
+	<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="cssforppt.css">
+</head>
+<body>
+	<div class="attributes" style="display: none; position: absolute; left: 22px; top: 20%;">
+		<label for="initLeft">Initial Left</label>
+		<input type="number" name="initLeft" min="0" max="400" class="value" id="initLeft"><br><br>
+		<label for="initTop">Initial Top</label>
+		<input type="number" name="initTop" min="0" max="400" class="value" id="initTop"><br><br>
+		<label for="finalLeft">Final Left</label>
+		<input type="number" name="finalLeft" min="0" max="400" class="value" id="finalLeft"><br><br>
+		<label for="finalTop">Final Top</label>
+		<input type="number" name="finalTop" min="0" max="400" class="value" id="finalTop"><br><br>
+		<label for="startTime">Start Time</label>
+		<input type="number" name="sTime" min="0" class="value" id="sTime"><br><br>
+		<label for="endTime">End Time</label>
+		<input type="number" name="eTime" min="0" class="value" id="eTime"><br><br>
+		<button id="addPowtoon">Add Powtoon</button>
+	</div><!-- 
+	<audio controls preload="auto" autobuffer>
+		<source src="1.mp3">
+	</audio> -->
+	<div class="sample">
+		<img src="backgroundImages/cat.jpg" class="sampleImages" id="img1">
+		<img src="backgroundImages/cat-01.jpg" class="sampleImages" id="img2">
+	</div>
+	<div>
+		<div class="slide" id="div1">
+		</div>
+	</div>
+	<div class="progress">
+		<button id="play">Play</button>
+		<div id="progressBar"><!-- 
+			<div id="startBar"></div>
+			<div id="endBar"></div> -->
+			<div id="coloredBar"></div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+
+		var timeStart;
+		var initialWidth = 0;
+		var finalWidth = 100;
+		var time = 10000;
+		var id = 0;// since i already have two <p> with ids 1 and 2
+		var interval;
+	$(document).ready(function(){
+		$("body").click(function(e){
+			// console.log(e.pageX+" "+e.pageY);
+		});
+
+		$("#play").click(function(){
+		timeStart = new Date();
+		frame = 1000/30;
+		interval = setInterval(init1,frame) ;
+		});
+	});
+	var Items = new Array();
+	function Item(Id,Left1,Top1,Left2,Top2,Time1,Time2){
+		this.id = Id;
+		this.margin_initial_left = Left1;
+		this.margin_initial_top = Top1;
+		this.margin_final_left = Left2;
+		this.margin_final_top = Top2;
+		this.startTime = Time1;
+		this.endTime = Time2;
+		this.totalTime = this.endTime - this.startTime;
+ 	}/*
+ 	Items[0] = new Item(1,100,100,5000,10000);
+ 	Items[1] = new Item(2,200,200,3000,7000);*/
+	
+	function init1(){
+		var timeNow = new Date();
+		var diff = timeNow - timeStart;
+		$.each(Items,function(i,val){
+			if(diff >= val.startTime && diff <= val.endTime)
+			{
+			margin_top = ""+(val.margin_initial_top + (diff - val.startTime) * ((val.margin_final_top - val.margin_initial_top)/val.totalTime))+"px";
+			margin_left = ""+(val.margin_initial_left + (diff - val.startTime) * ((val.margin_final_left - val.margin_initial_left)/val.totalTime))+"px";
+				$("#"+val.id+"").css('top',margin_top);
+				$("#"+val.id+"").css('left',margin_left);
+				$("#"+val.id+"").show();
+			}	
+			else
+			{
+				$("#"+val.id+"").hide();
+			}
+			// to stop the timer running 
+			if(diff > time){ 
+				clearInterval(interval);
+			}
+		});
+		var width = ((finalWidth - initialWidth)/time) * diff;
+		if(width <= 100){
+			$("#coloredBar").css("width",width+"%");
+		}
+	}
+</script>
+<script type="text/javascript">
+	var src;
+	$(".sampleImages").click(function(){
+		/*var src = $(this).attr('src');
+		var elem = $('<img src="'+src+'" class="pictures style="position: absolute;"" id="'+id+'">');
+		$("#div1").append(elem);
+		Items[id-1] = new Item(id,parseInt($("#left").val()),parseInt($("#top").val()),parseInt($("#sTime").val()),parseInt($("#eTime").val()));
+		// console.log($("#left").val()+" "+$("#top").val());
+		id = id+1;*/
+		$(".attributes").show();
+		src = $(this).attr('src');
+		var elem = $('<img src="'+src+'" class="pictures" style= "position: absolute;display: none" id="'+id+'">');
+		var initElem = $('<img src="'+src+'" class="pictures" style= "position: absolute;" id="init">');
+		var finalElem = $('<img src="'+src+'" class="pictures" style= "position: absolute;" id="final">');
+		$("#div1").append(elem);
+		$("#div1").append(initElem);
+		$("#div1").append(finalElem);
+	});
+
+	$("#addPowtoon").click(function(){
+		$(".attributes").hide();
+		$("#"+id).hide();
+		document.getElementById("init").remove();
+		document.getElementById("final").remove();
+		divMaxLeft = 780;
+		divMaxTop = 424;
+		var initLeft = (parseInt($("#initLeft").val()) <= divMaxLeft)?(parseInt($("#initLeft").val())):(divMaxLeft);
+		var initTop = (parseInt($("#initTop").val()) <= divMaxTop)?(parseInt($("#initTop").val())):(divMaxTop);
+		var finalLeft = (parseInt($("#finalLeft").val()) <= divMaxLeft)?(parseInt($("#finalLeft").val())):(divMaxLeft);
+		var finalTop = (parseInt($("#finalTop").val()) <= divMaxTop)?(parseInt($("#finalTop").val())):(divMaxTop);
+		var time1 = parseInt($("#sTime").val())*1000;
+		var time2 = parseInt($("#eTime").val())*1000;
+		Items[id] = new Item(id,initLeft,initTop,finalLeft,finalTop,time1,time2);
+		// console.log($("#left").val()+" "+$("#top").val());
+		id = id+1;
+	});
+
+	$(".attributes > input").change(function(){
+		// These are the values for my pc's div set it accordingly more wisely later
+		divMaxLeft = 580;
+		divMaxTop = 329;
+		var left1 = ($("#initLeft").val());
+		var top1 = 	($("#initTop").val());
+		var left2 =	($("#finalLeft").val());
+		var top2 = ($("#finalTop").val());
+		var initLeft,initTop,finalLeft,finalTop;
+		console.log(left1);
+		if(left1 != ""){
+			initLeft = (parseInt($("#initLeft").val()) <= divMaxLeft)?(parseInt($("#initLeft").val())):(divMaxLeft);
+		}
+		else{
+			initLeft = 0;
+		}
+		if(top1 != ""){
+			initTop = (parseInt($("#initTop").val()) <= divMaxTop)?(parseInt($("#initTop").val())):(divMaxTop);
+		}
+		else{
+			initTop = 0;
+		}
+		if(left2 != ""){
+			finalLeft = (parseInt($("#finalLeft").val()) <= divMaxLeft)?(parseInt($("#finalLeft").val())):(divMaxLeft);
+		}
+		else{
+			finalLeft = 0;
+		}
+		if(top2 != ""){
+			finalTop = (parseInt($("#finalTop").val()) <= divMaxTop)?(parseInt($("#finalTop").val())):(divMaxTop);
+		}
+		else{
+			finalTop = 0;
+		}
+	
+		$("#init").css("margin-left",initLeft);
+		$("#init").css("margin-top",initTop);
+
+		$("#final").css("margin-left",finalLeft);
+		$("#final").css("margin-top",finalTop);
+
+	});
+	$("input").focus(function(){
+		var name = $(this).attr("name");
+		$("input[name='"+name+"']").css("background-color","aqua");
+	});
+	$("input").blur(function(){
+		var name = $(this).attr("name");
+		$("input[name='"+name+"']").css("background-color","white");
+	});
+</script>

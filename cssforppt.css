@@ -1,0 +1,47 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.slide{
+	border: 5px solid red;
+	position: absolute;
+	top: 18%;
+	left: 22%;
+	width: 60%;
+	height: 67%;
+}
+.progress
+{
+	position: absolute;
+	left: 16%;
+	top: 88%;
+}
+#progressBar{
+	border: 2px solid blue;
+	width: 750px;
+	height: 15px;
+	margin-left: 9.5%;
+}
+#play{
+	float: left;
+}
+.sampleImages
+{
+	width: 200px;
+	height: 100px;
+}
+.pictures{
+	width: 200px;
+	height: 100px;
+	position: absolute;
+}
+#coloredBar{
+	background-color: blue;
+	height: 15px;
+	width: 0%;
+}
+#startBar{
+	border: 2px solid red;
+	width: 5px;
+	height: 20px;
+}

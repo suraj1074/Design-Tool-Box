@@ -1,0 +1,44 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.sideBar{
+	width: 200px;
+	height: 400px;
+	border: 5px solid red;
+	color: rgba(255, 255, 255, 0.5);
+	position: fixed;
+	top: 20%;
+	left: 10%;
+}
+.sideBar li
+{
+	list-style: none;
+	margin: 10px;
+	text-align: center;
+}
+.sideBar li a
+{
+	text-decoration: none;
+}
+.page{
+	position: fixed;
+	top: 15%;
+	left: 30%;
+}
+.themes{
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 200px;
+	height: 50px;
+	border: 5px solid blue;
+}
+.wrapper li{
+	display: inline;
+	margin: 5px;
+}
+.wrapper li a
+{
+	text-decoration: none;
+}

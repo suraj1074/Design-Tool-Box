@@ -1,0 +1,27 @@
+Top Left part Background section consists of all the images that are in the folder
+c://xampp/htdocs/admin/backgroundImages.
+
+To use any new image for editing Just place that image in above backgroundImages folder in the respective directory.
+
+Click on any image from backgroundImage section, it will appear on canvas for editing.
+You can resize ,rotate ,drag image anywhere in canvas. These resizing,rotating and moving here and there properties are available for each and every object that is present in the canvas.
+
+Filters for image: There are two types of filter Manual and Normal.Normal filter buttons are available when you select an image and click on filter button.
+
+Manual filter gives you many options like brightness,contrast.
+
+Click DONE button (present in the button) when you are done applying filters,
+
+IF YOU WILL NOT CLICK DONE, THERE MAY BE SOME PROBLEMS IN FUTURE FILTERS.
+
+
+In textbox section there is a single textbox image,click on that, a textbox will appear in the central division for editing.Edit text there and use options that are coming above to customize the text, available buttons are Underline, Bold, italic. Choose color, change font size and change font family from the available options. You can customize even a single letter by selecting that letter and applying properties on it.
+
+Click on make chart link to make charts. Feed data in the table. Press Ok button when you have finished inputting data. Choose the option for charts as vertical, horizontal and then click plot. You can save the chart by clicking on save.
+
+Use free drawing button to draw freely on the canvas.
+Use "to JSON" button to save the work in between and start working from the same state later. It will download two files, one is a text file and other is a svg file. move both the files to backgroundImages folder. You can start editing from the state you left.On clicking on that svg image.
+
+Use save and download image to download canvas as a png image to your local system.
+
+Apply image filters cautiously as each filter is being applied on the top of previously applied filter.

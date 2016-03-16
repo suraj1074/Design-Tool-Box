@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Charts</title>
+<script language="javascript" type="text/javascript" src="plot/jquery.min.js"></script>
+<script type="text/javascript" src="plot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="plot/jquery.jqplot.js"></script>
+<script class="include" type="text/javascript" src="plot/plugins/jqplot.barRenderer.min.js"></script>
+<script class="include" type="text/javascript" src="plot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script class="include" type="text/javascript" src="plot/plugins/jqplot.pieRenderer.min.js"></script>
+<script class="include" type="text/javascript" src="plot/plugins/jqplot.donutRenderer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="plot/jquery.jqplot.css" />
+<link rel="stylesheet" type="text/css" href="chart.css" />
+</head>
+<body>
+	<div>
+	<button id="save">Save</button>
+	<div id="chartdiv" style="height:400px;width:300px;"></div>
+	<div id="options">
+		<select id="choose">
+			<option value="vertical">Vertical Bar</option>
+			<option value="horizontal">Horizontal Bar</option>
+			<option value="line">Line</option>
+			<option value="area">Area</option>
+			<option value="pie">pie</option>
+			<option value="donut">Donut</option>
+		</select>
+		<button id="plot">Plot</button	
+	</div>
+	<div id="table" style="height:400px;width:300px;">
+		<button id="ok">Ok</button>
+	</div>
+	</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#save").click(function(){
+		$("#chartdiv").jqplotSaveImage();
+	});
+	var rows = 5;
+	var columns = 2;
+	var valueArray = [];
+	var nameArray = [];
+	var Title = "";
+	$("#ok").click(function(){
+		for(var i=1;i<rows;i++){
+			valueArray.push(parseInt($("#"+(i+1)+"_2 > input").val()));
+		}
+		for(var i=1;i<rows;i++){
+			nameArray.push($("#"+(i+1)+"_1 > input").val());
+		}
+		Title = $("#1_1 > input").val();
+	});
+	$("#plot").click(function(){
+	 	value = $("#choose").val();
+	 	if(value == "vertical") vertical();
+	 	else if(value == "horizontal") horizontal();
+	 	else if(value == "line") line();
+	 	else if(value == "pie") pie();
+	 	else if(value == "donut") donut();
+	 	else if(value == "area") area();
+	});
+	function vertical(){
+	$("#chartdiv").empty();
+	$.jqplot.config.enablePlugins = true;
+	var data = [valueArray];
+    plot1 = $.jqplot('chartdiv', data, {
+     	seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: true },
+            },
+        axes: {
+        	xaxis: {
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                    ticks: nameArray
+                }
+        },
+        title: Title,
+     	highlighter: { show: false } 
+     });
+	}
+
+	function horizontal(){
+	$("#chartdiv").empty();
+	$.jqplot.config.enablePlugins = true;
+     plot1 = $.jqplot('chartdiv', [valueArray], {
+     	  title: Title,
+     	seriesDefaults:{
+                renderer:$.jqplot.BarRenderer,
+                pointLabels: { show: true },
+                rendererOptions: {
+                    barDirection: 'horizontal'
+                }
+            },
+        axes: {
+        	yaxis: {
+                    renderer: $.jqplot.CategoryAxisRenderer,
+                    ticks: nameArray
+                }
+        },
+     	highlighter: { show: false } 
+     });
+	}
+	function line(){
+		$("#chartdiv").empty();
+		plot1 = $.jqplot('chartdiv', [valueArray],{
+			title: Title
+		});
+	}
+	function pie(){
+		$("#chartdiv").empty();
+		plot1 = $.jqplot('chartdiv',[valueArray],{
+			title: Title,
+			seriesDefaults:{
+            renderer:$.jqplot.PieRenderer, 
+            trendline:{ show:false }, 
+            rendererOptions: { padding: 8, showDataLabels: true }
+        }
+		});
+	}
+	function donut(){
+		$("#chartdiv").empty();
+		plot1 = $.jqplot('chartdiv',[valueArray],{
+			title: Title,
+			seriesDefaults:{
+            renderer:$.jqplot.DonutRenderer,  
+            trendline:{ show:false }, 
+            rendererOptions: { padding: 8, showDataLabels: true }
+        }
+		});	
+	}
+	function area(){
+		$("#chartdiv").empty();
+		$.jqplot.config.enablePlugins = true;
+     	plot1 = $.jqplot('chartdiv', [valueArray], {
+     		title: Title,
+     		seriesDefaults:{
+    	            pointLabels: { show: true },
+    	            fill: true
+    	        },
+    	    axes: {
+    	    	xaxis: {
+    	                renderer: $.jqplot.CategoryAxisRenderer,
+    	                ticks: nameArray
+    	            }
+    	    },
+    	 	highlighter: { show: false } 
+    	 });
+	}
+	//generate table for sample Data 1
+	var elem = '<table><tr><th></th>';
+	for(var i=0;i<columns;i++)
+	{
+		elem = elem + '<th>'+String.fromCharCode(65+i)+'</th>';
+	}
+	elem = elem + '</tr>';
+	for(var i=0;i<rows;i++){
+		elem = elem + '<tr><td>'+(i+1)+'</td>';
+		for(var j = 0;j<columns;j++){
+			var txt = ""+(i+1)+"_"+(j+1);
+			elem = elem + '<td id="'+txt+'""></td>';
+		}
+		elem = elem + '</tr>';
+	}
+	elem = elem + '</table>';
+	$("#table").append(elem);
+
+	for(var i=1;i<rows;i++){
+		elem = '<input type="text" placeholder="Item '+(i)+'" value="'+(String.fromCharCode(97+i))+'">';
+		$("#"+(i+1)+"_1").append(elem);
+	}
+	for(var i = 1;i<rows;i++){
+		elem = '<input type="number" placeholder="'+(i)+'" value="'+(i+1)+'">';
+		$("#"+(i+1)+"_2").append(elem);
+	}
+	$("#1_2").append('<input type="text" placeholder="Year 1">');
+	$("#1_1").append('<input type="text" placeholder="Title">');
+});
+	</script>
+</html>

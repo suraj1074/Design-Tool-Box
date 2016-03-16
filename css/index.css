@@ -1,0 +1,21 @@
+#category1{
+	/*margin-left: 200px;*/
+}
+#category2 ul{
+	/*list-style-type: none;*/
+}
+#result{
+	/*position: absolute;
+	left: 205px;
+	top: 51px;	*/
+}
+img{
+	margin: 10px;
+	width: 120px;
+	height: 100px;
+	box-shadow: 4px 6px 6px #888888;
+}
+.fiveInARow .image{
+	float: left;
+	text-align: center;
+}
